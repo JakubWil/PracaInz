@@ -1,0 +1,72 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.containerSP{
+    width: 1300px;
+    margin:50px auto;
+    
+}
+
+.sp-heading{
+    
+    font-size: 35px;
+}
+
+.second-container-sp{
+    display: flex;
+    gap: 325px;
+}
+
+.hea{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+.overall-name{
+    display: inline-block;
+}
+
+.overall-risk{
+    text-align: center;
+    background-color:#e03131 ;
+    font-weight: bold;
+    color: #ffffff;
+    margin-left: 10px;
+    padding: 10px;
+    width: 70px;
+
+    border-radius: 10px;
+}
+
+.ror{
+    display: flex;
+    gap: 10px;
+}
+
+
+
+
+.lel{
+    display: flex;
+    gap: 10px;
+}
+
+.status-container{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.status-result{
+    color: #ffffff;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color:#37b24d ;
+}

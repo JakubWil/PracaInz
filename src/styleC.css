@@ -1,0 +1,38 @@
+.container1{
+    position: relative;
+  
+    background-color: rgba(138, 170, 229, 0.15);
+    
+    padding: 80px 200px 80px 200px;
+    
+}
+
+.slogan-text{
+    font-size: 33px;
+    color: #339af0;
+    text-align: center;
+}
+
+.img-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 650px;
+    top:1180px;
+
+    
+}
+
+.name{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 0;
+    
+}
+
+.role-name{
+    font-size: 18px;
+  
+}

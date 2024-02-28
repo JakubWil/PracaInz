@@ -1,0 +1,27 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.containerSP{
+    width: 1300px;
+    margin:50px auto;
+    
+}
+
+.findings-header{
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.vulnerability-header{
+    font-size:25px;
+    color: green;
+    font-weight: bold;
+}
+
+.heh{
+    font-weight: bold;
+}
