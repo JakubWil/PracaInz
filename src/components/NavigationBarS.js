@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function ColorSchemesExample() {
+function NavigationBarS() {
 
 
 
@@ -14,15 +14,10 @@ function ColorSchemesExample() {
     <>
       <Navbar bg="light" style={{ backgroundColor: '#8AAAE5', height: '80px' }} variant="white">
         <Container>
-          <Navbar.Brand href="#home" >
+          <Navbar.Brand href="http://localhost:3000/#home" >
             
             Webscanner JW</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#About">About
-            </Nav.Link>
-          </Nav>
+         
         </Container>
       </Navbar>
      
@@ -32,4 +27,4 @@ function ColorSchemesExample() {
   );
 }
 
-export default ColorSchemesExample;
+export default NavigationBarS;

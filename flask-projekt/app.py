@@ -22,18 +22,18 @@ def scan_for_vulnerabilities(target_url):
     risk_levels = {'High': 0, 'Medium': 0, 'Low': 0}
     
 
-    # Dodane linie
+    
     start_time = datetime.now()
 
 
     
 
     try:
-        # Pobierz zawartość strony
+        
         response = requests.get(target_url)
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # Przykładowy test SQL Injection
+        
         sql_injection_test = soup.find('input', {'name': 'username'})
         if sql_injection_test:
             vulnerabilities.append({
@@ -46,12 +46,13 @@ def scan_for_vulnerabilities(target_url):
                 'recommendations': [
                     'Use parameterized queries to sanitize user input.',
                     'Implement input validation and validation on the server side.'
-                ]
+                ],
+                "external": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
             })
             risk_levels['High'] += 1
             total_vulnerabilities += 1
 
-        # Przykładowy test Cross-Site Scripting (XSS)
+        
         xss_test = soup.find('script')
         if xss_test:
             vulnerabilities.append({
@@ -64,12 +65,13 @@ def scan_for_vulnerabilities(target_url):
                 'recommendations': [
                     'Escape user input to prevent script injection.',
                     'Implement content security policies (CSP) to mitigate XSS attacks.'
-                ]
+                ],
+                "external": "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"
             })
             risk_levels['Medium'] += 1
             total_vulnerabilities += 1
 
-        # Test czytelności kodu źródłowego
+        
         source_code_test = response.text.lower().count('password')
         if source_code_test > 0:
             vulnerabilities.append({
@@ -82,12 +84,13 @@ def scan_for_vulnerabilities(target_url):
                 'recommendations': [
                     'Review and remove sensitive information from source code.',
                     'Implement secure coding practices.'
-                ]
+                ],
+                "external": "https://cheatsheetseries.owasp.org/cheatsheets/Abuse_Case_Cheat_Sheet.html#a32017-sensitive-data-exposure"
             })
             risk_levels['High'] += 1
             total_vulnerabilities += 1
 
-        # Test ataków CSRF
+        
         csrf_test = soup.find('input', {'name': 'csrf_token'})
         if not csrf_test:
             vulnerabilities.append({
@@ -100,12 +103,13 @@ def scan_for_vulnerabilities(target_url):
                 'recommendations': [
                     'Implement and validate CSRF tokens in forms.',
                     'Use anti-CSRF tokens to protect against CSRF attacks.'
-                ]
+                ],
+                "external": "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
             })
             risk_levels['Low'] += 1
             total_vulnerabilities += 1
 
-        # Test bezpieczeństwa nagłówków HTTP
+       
         headers = response.headers
         if 'content-security-policy' not in headers or 'strict-transport-security' not in headers:
             vulnerabilities.append({
@@ -118,12 +122,13 @@ def scan_for_vulnerabilities(target_url):
                 'recommendations': [
                     'Implement proper security headers, such as Content Security Policy (CSP) and Strict-Transport-Security (HSTS).',
                     'Regularly review and update security headers based on best practices.'
-                ]
+                ],
+                "external": "https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html"
             })
             risk_levels['Medium'] += 1
             total_vulnerabilities += 1
 
-        # Analiza zdalnych zasobów
+        
         remote_resource_test = soup.find('img', {'src': 'http://evil.com/malicious-script.js'})
         if remote_resource_test:
             vulnerabilities.append({
@@ -136,13 +141,14 @@ def scan_for_vulnerabilities(target_url):
                 'recommendations': [
                     'Validate and sanitize remote resources before including them.',
                     'Implement a Content Security Policy (CSP) to restrict external resource inclusion.'
-                ]
+                ],
+                "external": "https://www.imperva.com/learn/application-security/rfi-remote-file-inclusion/"
             })
             risk_levels['Medium'] += 1
             total_vulnerabilities += 1
 
 
-        # Przykładowy test Cross-Site Request Forgery (CSRF)
+        
         csrf_test_new = soup.find('form')
         if csrf_test_new:
             vulnerabilities.append({
@@ -155,12 +161,14 @@ def scan_for_vulnerabilities(target_url):
                 'recommendations': [
                     'It is advisable to implement and validate CSRF tokens in forms.',
                     'There is a moderate risk of unauthorized actions on behalf of the user.'
-                ]
+                    
+                ],
+                "external": "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
             })
             risk_levels['Medium'] += 1
             total_vulnerabilities += 1
 
-        # Przykładowy test Insecure Direct Object References (IDOR)
+        
         idor_test = soup.find('a', {'href': 'http://example.com/user/profile'})
         if idor_test:
             vulnerabilities.append({
@@ -173,13 +181,14 @@ def scan_for_vulnerabilities(target_url):
                 'recommendations': [
                     'Implement proper access controls and validate user permissions.',
                     'There is a critical risk of unauthorized access to sensitive data or functionality.'
-                ]
+                ],
+                "external": "https://cheatsheetseries.owasp.org/cheatsheets/Insecure_Direct_Object_Reference_Prevention_Cheat_Sheet.html"
             })
             risk_levels['High'] += 1
             total_vulnerabilities += 1
             
         
-        # Dodane linie
+        
         finish_time = datetime.now()
         scan_duration = finish_time - start_time
 

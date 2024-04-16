@@ -5,6 +5,7 @@ import ButtonsExample from './components/ButtonsExample';
 import Section from './components/Section';
 import SectionSlogan from './components/SectionSlogan';
 import Footer from './components/Footer';
+import Footerv2 from './components/Footerv2.js'
 import SecondPage from './secondPage/SecondPage.js'; 
 import ScannerComponent from './components/ScannerComponent.js';
 
@@ -28,7 +29,7 @@ function App() {
           <Route path="/second" element={<SecondPage />} />
         </Routes>
 
-        <Footer />
+        <Footerv2 />
     
     </Router>
     

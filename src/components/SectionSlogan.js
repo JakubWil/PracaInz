@@ -16,7 +16,7 @@ function SectionSlogan() {
   return (
     <>
       
-      <div class='container1'>
+      <div class='container1' id="About">
         <p class='slogan-text'>JW Websanner was able to give us insight immediately into our online profile and identify our cyber risk. More importantly how potential customers and partners could view our business and online reputation.</p>
       </div>
 

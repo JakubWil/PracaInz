@@ -15,8 +15,8 @@ function ButtonsExample() {
 
   const [urlInput, setUrlInput] = useState('');
   const [showAlert, setShowAlert] = useState(false);
-  const [loading, setLoading] = useState(false); // Nowy stan dla efektu oczekiwania
-  const navigate = useNavigate();  // Użyj useNavigate zamiast useHistory
+  const [loading, setLoading] = useState(false); 
+  const navigate = useNavigate();  
 
   const containerStyle = {
     display: 'flex',
@@ -26,14 +26,13 @@ function ButtonsExample() {
     gap: '10px',
     width: '100%',
     height: '100px',
-    // maxWidth: '1500px',
-    // margin: '20px auto',
+    
     padding: '400px',
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    // minHeight: '100vh',
+    
   };
 
   const containerStyle1 = {
@@ -82,7 +81,7 @@ function ButtonsExample() {
       setShowAlert(true);
     } else {
       try {
-        setLoading(true); // Ustaw stan na true przed rozpoczęciem skanowania
+        setLoading(true); 
         const response = await fetch('http://localhost:5000/scan', {
           method: 'POST',
           headers: {
@@ -104,7 +103,7 @@ function ButtonsExample() {
         console.error('Error during scanning:', error);
         setShowAlert(true);
       } finally {
-        setLoading(false); // Ustaw stan na false po zakończeniu skanowania
+        setLoading(false); 
       }
     }
   };

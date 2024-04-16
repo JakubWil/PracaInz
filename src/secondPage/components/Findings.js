@@ -56,6 +56,13 @@ function Findings({ scanResults }) {
                         <li key={i}>{recommendation}</li>
                       ))}
                     </ul>
+                    <div>
+                  <p className="external-link-heading">External Link:</p>
+                  <a href={vulnerability.external} target="_blank" rel="noopener noreferrer">
+                    Learn More
+                  </a>
+                </div>
+                    
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>

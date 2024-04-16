@@ -7,15 +7,15 @@ function Section() {
 
 
   const handleCheckClick = () => {
-    // Przewiń stronę do góry
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Możesz użyć również window.scroll(0, 0);
+   
+    window.scrollTo({ top: 0, behavior: 'smooth' }); 
   };
 
 
   return (
     <>
       
-      <div class='container2'>
+      <div class='container2' id ="features">
         <h1 class='section-heading'>Features</h1>
       <div class='grid-template22'>
         <div class='grid-element-1'>

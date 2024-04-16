@@ -1,13 +1,16 @@
 import React from 'react';
 import '../summary.css';
-
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import domtoimage from 'dom-to-image';
+import Findings from './Findings'
 
 
 
 function Summary({ scanResults }) {
 
     if (!scanResults) {
-        return null; // Dodaj sprawdzenie, czy są wyniki skanowania
+        return null; 
       }
 
 
@@ -23,6 +26,15 @@ function Summary({ scanResults }) {
       } = scanResults;
 
       
+    const getRiskClass = (riskLevel) => {
+        switch (riskLevel) {
+            case 'High':  return 'risk-high';
+            case 'Medium': return 'risk-medium';
+            case 'Low':  return 'risk-low';
+            default: return ''; 
+        }
+    }
+      
 
   return (
     <>
@@ -30,12 +42,13 @@ function Summary({ scanResults }) {
         
         <p class='sp-heading'>Summary</p>
         <p class="scanned-page"> Scanned page: {target_url}</p>
+        {/* <button onClick={downloadPDF}>Pobierz Raport</button> */}
         <hr/>
         <div class='second-container-sp'>
             {/* OVERALL */}
             <div class='overall-container'>
                 <p class='overall-name hea'>Overall risk level:</p>
-                <p class='overall-risk'>{overall_risk}</p>
+                <p className={`overall-risk ${getRiskClass(overall_risk)}`}>{overall_risk}</p>
             </div>
             {/* RISK */}
             <div class='risk-container'>
